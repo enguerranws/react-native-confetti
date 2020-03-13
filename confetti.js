@@ -31,10 +31,10 @@ class Confetti extends Component {
   }
 
   componentDidMount() {
-      let {duration, index} = this.props;
+      let {duration, bottomOverflow} = this.props;
         Animated.timing(this._yAnimation, {
            duration: duration + this.randomIntValue(duration * .2, duration * -.2),
-           toValue: windowHeight + 1.25,
+           toValue: windowHeight + bottomOverflow,
            useNativeDriver: true
         }).start(this.props.onAnimationComplete);
   }
@@ -98,7 +98,8 @@ Confetti.defaultProps = {
       "rgb(147.9, 99.4, 140.2)"
     ],
     size: 1,
-    bsize: 1
+    bsize: 1,
+    bottomOverflow: 1.25
 }
 
 const styles = StyleSheet.create({
